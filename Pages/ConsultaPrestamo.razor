@@ -1,0 +1,40 @@
+@page "/ConsultaPrestamo"
+
+@inject PrestamoBLL prestamoBLL
+
+
+
+<div class="container">
+		<table class="table table-hover">
+
+				<thead class="thead-dark">
+					<tr>
+						<th>PrestamoId</th>
+						<th>Fecha</th>
+						<th>Vence</th>
+                        <th>PersonaId</th>
+                        <th>Concepto</th>
+                        <th>Monto</th>
+                        <th>Balance</th>
+					</tr>
+
+				</thead>
+				<tbody>
+			@foreach (var item in prestamoBLL.GetList())
+			{
+						<tr>
+							<td>@item.PrestamoId</td>
+							<td>@item.Fecha</td>
+							<td>@item.Vence</td
+                            <td>@item.PersonaId</td
+                            <td>@item.Concepto</td
+                            <td>@item.monto</td
+                            <td>@item.balance</td
+						</tr>
+			}
+
+				</tbody>
+
+		</table>
+
+</div>

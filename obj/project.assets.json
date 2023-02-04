@@ -1350,11 +1350,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\josep\\Registros\\Registros.csproj",
+      "projectUniqueName": "C:\\Users\\josep\\Desktop\\8vo semestre\\Aplicada1\\Registros\\Registros.csproj",
       "projectName": "Registros",
-      "projectPath": "C:\\Users\\josep\\Registros\\Registros.csproj",
+      "projectPath": "C:\\Users\\josep\\Desktop\\8vo semestre\\Aplicada1\\Registros\\Registros.csproj",
       "packagesPath": "C:\\Users\\josep\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\josep\\Registros\\obj\\",
+      "outputPath": "C:\\Users\\josep\\Desktop\\8vo semestre\\Aplicada1\\Registros\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\josep\\AppData\\Roaming\\NuGet\\NuGet.Config",

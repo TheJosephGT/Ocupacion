@@ -16,6 +16,8 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 
 builder.Services.AddScoped<OcupacionesBLL>();
+builder.Services.AddScoped<PersonaBLL>();
+builder.Services.AddScoped<PrestamoBLL>();
 
 var app = builder.Build();
 

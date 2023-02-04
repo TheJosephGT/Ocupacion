@@ -8,7 +8,7 @@ public class Ocupaciones{
         [Required(ErrorMessage = "La descripcion es requerida")]
         public string? Descripcion { get; set; }
 
-        public double Salario { get; set; }
+        public double? Salario { get; set; }
 
 
 }

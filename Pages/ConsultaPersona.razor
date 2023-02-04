@@ -1,0 +1,39 @@
+@page "/ConsultaPersona"
+
+@inject PersonaBLL personaBLL
+
+
+<div class="container">
+		<table class="table table-hover">
+
+				<thead class="thead-dark">
+					<tr>
+						<th>PersonaId</th>
+						<th>Nombre</th>
+						<th>Telefono</th>
+						<th>Celular</th>
+						<th>Email</th>
+						<th>Direccion</th>
+						<th>FechaNacimiento</th>
+					</tr>
+
+				</thead>
+				<tbody>
+			@foreach (var item in personaBLL.GetList())
+			{
+						<tr>
+							<td>@item.PersonaId</td>
+							<td>@item.Nombre</td>
+							<td>@item.Telefono</td
+                            <td>@item.Celular</td
+                            <td>@item.Email</td
+                            <td>@item.Direccion</td
+                            <td>@item.FechaNacimiento</td
+						</tr>
+			}
+
+				</tbody>
+
+		</table>
+
+</div>
