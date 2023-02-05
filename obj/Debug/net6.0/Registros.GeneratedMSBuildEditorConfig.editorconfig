@@ -23,6 +23,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdGEucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/ConsultaPagos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdGFQYWdvcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/ConsultaPersona.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdGFQZXJzb25hLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -45,6 +49,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/Ocupacion.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT2N1cGFjaW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/RegistroPago.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0cm9QYWdvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/RegistroPersona.razor]

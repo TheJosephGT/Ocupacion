@@ -25,6 +25,26 @@ namespace Registros.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PagosDetalles",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    PagoId = table.Column<int>(type: "INTEGER", nullable: false),
+                    PrestamoId = table.Column<string>(type: "TEXT", nullable: true),
+                    ValorPagado = table.Column<int>(type: "INTEGER", nullable: true),
+                    Discriminator = table.Column<string>(type: "TEXT", nullable: false),
+                    Fecha = table.Column<string>(type: "TEXT", nullable: true),
+                    PersonaId = table.Column<int>(type: "INTEGER", nullable: true),
+                    Concepto = table.Column<string>(type: "TEXT", nullable: true),
+                    Monto = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PagosDetalles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Persona",
                 columns: table => new
                 {
@@ -67,6 +87,9 @@ namespace Registros.Migrations
         {
             migrationBuilder.DropTable(
                 name: "ocupaciones");
+
+            migrationBuilder.DropTable(
+                name: "PagosDetalles");
 
             migrationBuilder.DropTable(
                 name: "Persona");

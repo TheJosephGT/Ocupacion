@@ -34,6 +34,34 @@ namespace Registros.Migrations
                     b.ToTable("ocupaciones");
                 });
 
+            modelBuilder.Entity("PagosDetalle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("PagoId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("PrestamoId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("ValorPagado")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PagosDetalles");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("PagosDetalle");
+
+                    b.UseTphMappingStrategy();
+                });
+
             modelBuilder.Entity("Persona", b =>
                 {
                     b.Property<int>("PersonaId")
@@ -95,6 +123,26 @@ namespace Registros.Migrations
                     b.HasKey("PrestamoId");
 
                     b.ToTable("Prestamo");
+                });
+
+            modelBuilder.Entity("Pagos", b =>
+                {
+                    b.HasBaseType("PagosDetalle");
+
+                    b.Property<string>("Concepto")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Fecha")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Monto")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("PersonaId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasDiscriminator().HasValue("Pagos");
                 });
 #pragma warning restore 612, 618
         }

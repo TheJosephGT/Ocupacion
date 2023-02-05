@@ -1,0 +1,37 @@
+@page "/ConsultaPago"
+
+<!--PagoId , Fecha, PersonaId, Concepto, ValorPagado-->
+
+@inject PagosBLL pagosBLL
+
+
+<div class="container">
+		<table class="table table-hover">
+
+				<thead class="thead-dark">
+					<tr>
+						<th>PagoId</th>
+						<th>Fecha</th>
+						<th>PersonaId</th>
+						<th>Concepto</th>
+						<th>ValorPagado</th>
+					</tr>
+
+				</thead>
+				<tbody>
+			@foreach (var item in pagosBLL.GetList())
+			{
+						<tr>
+							<td>@item.PagoId</td>
+							<td>@item.Fecha</td>
+							<td>@item.PersonaId</td
+                            <td>@item.Concepto</td
+                            <td>@item.ValorPagado</td
+						</tr>
+			}
+
+				</tbody>
+
+		</table>
+
+</div>

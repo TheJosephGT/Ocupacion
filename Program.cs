@@ -18,6 +18,9 @@ builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddScoped<OcupacionesBLL>();
 builder.Services.AddScoped<PersonaBLL>();
 builder.Services.AddScoped<PrestamoBLL>();
+builder.Services.AddScoped<PagosBLL>();
+builder.Services.AddScoped<PagosDetalle>();
+
 
 var app = builder.Build();
 
