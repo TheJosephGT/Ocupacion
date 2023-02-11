@@ -2,7 +2,7 @@
 
 using System.ComponentModel.DataAnnotations;
 
-public class Pagos : PagosDetalle{
+public class Pagos{
 
     [Key]
 
@@ -11,9 +11,9 @@ public class Pagos : PagosDetalle{
 
     public string? Fecha {get; set;}
 
-    public int? PersonaId {get;set;}
+    public int PersonaId {get;set;}
 
     public string? Concepto {get;set;}
 
-    public string? Monto {get;set;}
+    public double Monto {get;set;}
 }

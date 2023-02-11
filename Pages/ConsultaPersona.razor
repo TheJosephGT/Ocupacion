@@ -19,7 +19,7 @@
 
 				</thead>
 				<tbody>
-			@foreach (var item in personaBLL.GetList())
+			@foreach (var item in personaBLL.GetList(o => true))
 			{
 						<tr>
 							<td>@item.PersonaId</td>

@@ -2,6 +2,7 @@
 @page "/pagos/{PagosId:int}"
 
 @inject PagosBLL pagosBLL
+@inject PersonaBLL personaBLL
 
 <!--Campos: Pagos(PagoId, Fecha, PersonaId, Concepto, Monto), PagosDetalle(Id, PagoId, PrestamoId, ValorPagado) -->
 
@@ -16,19 +17,24 @@
         <label>PagoId: </label><br>
         <InputNumber @bind-Value="pagos.PagoId" class="form-control" /><br>
 
-        <button type="submit" class="btn btn-success" @onclick="Buscar"><span class ="oi oi-document"</span>Buscar</button>
+        <button type="submit" class="btn btn-success" @onclick="Buscar"><span class ="oi oi-document"</span>Buscar</button><br>
 
         <label>Fecha: </label><br>
         <InputText @bind-Value="pagos.Fecha" class="form-control" /><br>
 
         <label>PersonaId: </label><br>
-        <InputNumber @bind-Value="pagos.PersonaId" class="form-control" /><br>
+        <InputSelect class="form-select" @bind-Value="pagos.PersonaId">
+				@foreach (var personaExistente in personaBLL.GetList(o => true))
+				{
+					<option value="@personaExistente.PersonaId">@personaExistente.Nombre</option>
+				}
+		</InputSelect>
 
         <label>Concepto: </label><br>
         <InputText @bind-Value="pagos.Concepto" class="form-control" /><br>
 
-        <label>ValorPagado: </label><br>
-        <InputNumber @bind-Value="pagos.ValorPagado" class="form-control" /><br>
+        <label>Monto: </label><br>
+        <InputNumber @bind-Value="pagos.Monto" class="form-control" /><br>
 
     </div>
 

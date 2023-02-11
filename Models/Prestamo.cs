@@ -10,7 +10,7 @@ public class Prestamo{
 
     public string? Vence {get;set;}
 
-    public int? PersonaId {get; set;}
+    public int PersonaId {get; set;}
 
     public string? Concepto {get; set;}
 

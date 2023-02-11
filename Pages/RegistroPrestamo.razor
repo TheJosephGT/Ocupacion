@@ -2,6 +2,7 @@
 @page "/prestamo/{PrestamoId:int}"
 
 @inject PrestamoBLL prestamoBLL
+@inject PersonaBLL personaBLL
 
 <EditForm Model="prestamo" OnInvalidSubmit="Guardar">
     <div class= "card">
@@ -14,6 +15,8 @@
         <label>PrestamoId: </label><br>
         <InputNumber @bind-Value="prestamo.PrestamoId" class="form-control" /><br>
 
+        <button type="buttom" class="btn btn-primary" @onclick="Nuevo"><span class ="oi oi-file" </span>Nuevo</button><br>
+
         <label>Fecha: </label><br>
         <InputText @bind-Value="prestamo.Fecha" class="form-control" /><br>
 
@@ -21,7 +24,13 @@
         <InputText @bind-Value="prestamo.Vence" class="form-control" /><br>
 
         <label>PersonaId: </label><br>
-        <InputNumber @bind-Value="prestamo.PersonaId" class="form-control" /><br>
+        <InputSelect class="form-select" @bind-Value="prestamo.PersonaId">
+				@foreach (var personaExistente in personaBLL.GetList(o => true))
+				{
+					<option value="@personaExistente.PersonaId">@personaExistente.Nombre</option>
+				}
+		</InputSelect>
+        
 
         <label>Concepto: </label><br>
         <InputText @bind-Value="prestamo.Concepto" class="form-control" /><br>

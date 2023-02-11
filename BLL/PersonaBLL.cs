@@ -47,8 +47,8 @@ public class PersonaBLL
         return _contexto.Persona.Where(o => o.PersonaId == personaId).AsNoTracking().SingleOrDefault();
     }
 
-    public List<Persona> GetList()
+    public List<Persona> GetList(Expression<Func<Persona, bool>> criterio)
     {
-        return _contexto.Persona.ToList();
+        return _contexto.Persona.AsNoTracking().Where(criterio).ToList();
     }
 }

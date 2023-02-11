@@ -20,7 +20,7 @@
 
 				</thead>
 				<tbody>
-			@foreach (var item in prestamoBLL.GetList())
+			@foreach (var item in prestamoBLL.GetList(o => true))
 			{
 						<tr>
 							<td>@item.PrestamoId</td>

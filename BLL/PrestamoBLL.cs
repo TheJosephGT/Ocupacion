@@ -46,9 +46,9 @@ public class PrestamoBLL{
         return _contexto.Prestamo.Where(o => o.PrestamoId == PrestamoId).AsNoTracking().SingleOrDefault();
     }
 
-    public List<Prestamo> GetList()
+    public List<Prestamo> GetList(Expression<Func<Prestamo, bool>> criterio)
     {
-        return _contexto.Prestamo.ToList();
+        return _contexto.Prestamo.AsNoTracking().Where(criterio).ToList();
     }
 
 }

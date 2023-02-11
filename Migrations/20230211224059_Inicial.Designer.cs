@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Registros.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20230205031419_Inicial")]
+    [Migration("20230211224059_Inicial")]
     partial class Inicial
     {
         /// <inheritdoc />
@@ -37,32 +37,48 @@ namespace Registros.Migrations
                     b.ToTable("ocupaciones");
                 });
 
+            modelBuilder.Entity("Pagos", b =>
+                {
+                    b.Property<int>("PagoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Concepto")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Fecha")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Monto")
+                        .HasColumnType("REAL");
+
+                    b.Property<int>("PersonaId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("PagoId");
+
+                    b.ToTable("Pagos");
+                });
+
             modelBuilder.Entity("PagosDetalle", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("PagoId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("PrestamoId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("ValorPagado")
+                    b.Property<int>("PrestamoId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<double>("ValorPagado")
+                        .HasColumnType("REAL");
 
                     b.HasKey("Id");
 
                     b.ToTable("PagosDetalles");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("PagosDetalle");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Persona", b =>
@@ -111,7 +127,7 @@ namespace Registros.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("PersonaId")
+                    b.Property<int>("PersonaId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Vence")
@@ -126,26 +142,6 @@ namespace Registros.Migrations
                     b.HasKey("PrestamoId");
 
                     b.ToTable("Prestamo");
-                });
-
-            modelBuilder.Entity("Pagos", b =>
-                {
-                    b.HasBaseType("PagosDetalle");
-
-                    b.Property<string>("Concepto")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Fecha")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Monto")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("PersonaId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasDiscriminator().HasValue("Pagos");
                 });
 #pragma warning restore 612, 618
         }

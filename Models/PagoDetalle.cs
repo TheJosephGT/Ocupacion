@@ -11,7 +11,7 @@ public class PagosDetalle{
 
     public int PagoId {get; set;}
 
-    public string? PrestamoId {get; set;}
+    public int PrestamoId {get; set;}
 
-    public int? ValorPagado {get;set;}
+    public double ValorPagado {get;set;}
 }
