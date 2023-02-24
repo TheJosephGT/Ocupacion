@@ -1,0 +1,85 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Registros
+build_property.RootNamespace = Registros
+build_property.ProjectDir = C:\Users\josep\Desktop\8vo semestre\Aplicada1\Registros\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\josep\Desktop\8vo semestre\Aplicada1\Registros
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaConsultas/Consulta.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YUNvbnN1bHRhc1xDb25zdWx0YS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaConsultas/ConsultaPagos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YUNvbnN1bHRhc1xDb25zdWx0YVBhZ29zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaConsultas/ConsultaPersona.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YUNvbnN1bHRhc1xDb25zdWx0YVBlcnNvbmEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaConsultas/ConsultaPrestamo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YUNvbnN1bHRhc1xDb25zdWx0YVByZXN0YW1vLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaRegistros/Ocupacion.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YVJlZ2lzdHJvc1xPY3VwYWNpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaRegistros/RegistroPago.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YVJlZ2lzdHJvc1xSZWdpc3Ryb1BhZ28ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaRegistros/RegistroPersona.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YVJlZ2lzdHJvc1xSZWdpc3Ryb1BlcnNvbmEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaRegistros/RegistroPrestamo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YVJlZ2lzdHJvc1xSZWdpc3Ryb1ByZXN0YW1vLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-hawjvyyabz
+
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-yq2ybihz8b
+
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
