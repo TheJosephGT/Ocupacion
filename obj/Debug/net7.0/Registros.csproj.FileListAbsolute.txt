@@ -67,3 +67,5 @@ C:\Users\josep\Desktop\8vo semestre\Aplicada1\Registros\obj\Debug\net7.0\refint\
 C:\Users\josep\Desktop\8vo semestre\Aplicada1\Registros\obj\Debug\net7.0\Registros.pdb
 C:\Users\josep\Desktop\8vo semestre\Aplicada1\Registros\obj\Debug\net7.0\Registros.genruntimeconfig.cache
 C:\Users\josep\Desktop\8vo semestre\Aplicada1\Registros\obj\Debug\net7.0\ref\Registros.dll
+C:\Users\josep\Desktop\8vo semestre\Aplicada1\Registros\bin\Debug\net7.0\Radzen.Blazor.dll
+C:\Users\josep\Desktop\8vo semestre\Aplicada1\Registros\bin\Debug\net7.0\System.Linq.Dynamic.Core.dll

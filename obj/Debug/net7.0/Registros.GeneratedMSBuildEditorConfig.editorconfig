@@ -20,36 +20,36 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaConsultas/Consulta.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YUNvbnN1bHRhc1xDb25zdWx0YS5yYXpvcg==
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaConsultas/C_Consulta.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YUNvbnN1bHRhc1xDX0NvbnN1bHRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaConsultas/ConsultaPagos.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YUNvbnN1bHRhc1xDb25zdWx0YVBhZ29zLnJhem9y
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaConsultas/C_Pagos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YUNvbnN1bHRhc1xDX1BhZ29zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaConsultas/ConsultaPersona.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YUNvbnN1bHRhc1xDb25zdWx0YVBlcnNvbmEucmF6b3I=
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaConsultas/C_Persona.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YUNvbnN1bHRhc1xDX1BlcnNvbmEucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaConsultas/ConsultaPrestamo.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YUNvbnN1bHRhc1xDb25zdWx0YVByZXN0YW1vLnJhem9y
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaConsultas/C_Prestamo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YUNvbnN1bHRhc1xDX1ByZXN0YW1vLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaRegistros/Ocupacion.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YVJlZ2lzdHJvc1xPY3VwYWNpb24ucmF6b3I=
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaRegistros/R_Ocupacion.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YVJlZ2lzdHJvc1xSX09jdXBhY2lvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaRegistros/RegistroPago.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YVJlZ2lzdHJvc1xSZWdpc3Ryb1BhZ28ucmF6b3I=
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaRegistros/R_Pago.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YVJlZ2lzdHJvc1xSX1BhZ28ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaRegistros/RegistroPersona.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YVJlZ2lzdHJvc1xSZWdpc3Ryb1BlcnNvbmEucmF6b3I=
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaRegistros/R_Persona.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YVJlZ2lzdHJvc1xSX1BlcnNvbmEucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaRegistros/RegistroPrestamo.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YVJlZ2lzdHJvc1xSZWdpc3Ryb1ByZXN0YW1vLnJhem9y
+[C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/CarpetaRegistros/R_Prestamo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FycGV0YVJlZ2lzdHJvc1xSX1ByZXN0YW1vLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/josep/Desktop/8vo semestre/Aplicada1/Registros/Pages/Home.razor]

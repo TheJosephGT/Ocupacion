@@ -14,19 +14,25 @@ using System.Linq.Expressions;
 
         public bool Existe(int ocupacionId)
         {
-            return _contexto.ocupaciones.Any(o => o.OcupacionID == ocupacionId);
+            return _contexto.Ocupaciones.Any(o => o.OcupacionID == ocupacionId);
         }
 
         private bool Insertar(Ocupaciones ocupacion)
         {
-            _contexto.ocupaciones.Add(ocupacion);
+            _contexto.Ocupaciones.Add(ocupacion);
             return _contexto.SaveChanges() > 0;
         }
 
         private bool Modificar(Ocupaciones ocupacion)
         {
-            _contexto.Entry(ocupacion).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            return _contexto.SaveChanges() > 0;
+            var ocupacionEncontrada = _contexto.Ocupaciones.Find(ocupacion.OcupacionID);
+
+            if(ocupacionEncontrada != null){
+                _contexto.Entry(ocupacion).CurrentValues.SetValues(ocupacion);
+                return _contexto.SaveChanges() > 0;
+            }
+
+            return false;
         }
 
         public bool Guardar(Ocupaciones ocupacion)
@@ -37,19 +43,24 @@ using System.Linq.Expressions;
                 return this.Modificar(ocupacion);
         }
 
-        private bool Eliminar(Ocupaciones ocupacion)
+        public bool Eliminar(int ocupacionId)
         {
-            _contexto.Entry(ocupacion).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
-            return  _contexto.SaveChanges() > 0;
+            var ocupacionEncontrada = _contexto.Ocupaciones.Where(o => o.OcupacionID == ocupacionId).SingleOrDefault();
+            if(ocupacionEncontrada != null){
+                _contexto.Entry(ocupacionEncontrada).State = EntityState.Deleted;
+                return  _contexto.SaveChanges() > 0;
+            }
+
+            return false;
         }
 
         public Ocupaciones? Buscar(int ocupacionId)
         {
-            return _contexto.ocupaciones.Where(o => o.OcupacionID == ocupacionId).AsNoTracking().SingleOrDefault();
+            return _contexto.Ocupaciones.Where(o => o.OcupacionID == ocupacionId).AsNoTracking().SingleOrDefault();
         }
 
-        public List<Ocupaciones> GetList()
+        public List<Ocupaciones> GetList(Expression<Func<Ocupaciones, bool>> criterio)
         {
-            return _contexto.ocupaciones.ToList();
+            return _contexto.Ocupaciones.AsNoTracking().Where(criterio).ToList();
         }
     }

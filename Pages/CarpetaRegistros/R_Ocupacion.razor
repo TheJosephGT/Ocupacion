@@ -1,0 +1,120 @@
+@page "/ocupacion"
+@page "/ocupacion/{OcupacionId:int}"
+
+@inject OcupacionesBLL ocupacionesBll
+@inject NotificationService NotificationService
+
+
+<EditForm Model="ocupaciones" OnInvalidSubmit="Guardar">
+	<DataAnnotationsValidator />
+	<div class= "card">
+	<div class= "card-header">
+		<h1> Registo Ocupaciones </h1>
+	</div>
+
+	<div class="card-body">
+		<div>
+			<label>OcupacionID: </label><br>
+			<InputNumber @bind-Value="ocupaciones.OcupacionID" class="form-control" /><br>
+			<button type="buttom" class="btn btn-primary" @onclick="Buscar"><span class ="oi oi-file" </span>Buscar</button><br>
+		</div>
+		<div>
+			<label>Descripcion: </label><br>
+			<InputText @bind-Value="ocupaciones.Descripcion" class="form-control" /><br>
+			<ValidationMessage For="@(() => ocupaciones.Descripcion)" />
+		</div>
+
+		<div>
+			<label>Salario: </label><br>
+			<InputNumber @bind-Value="ocupaciones.Salario" class="form-control" /><br>
+			<ValidationMessage For="@(() => ocupaciones.Salario)"/>
+		</div>
+	</div>
+
+	<div class="model-footer">
+		<button class="btn btn-primary" @onclick="Nuevo"><span class ="oi oi-file" </span>Nuevo</button>
+		<button type="submit" class="btn btn-success" @onclick="Guardar"><span class ="oi oi-document"</span>Guardar</button>
+		<button class="btn btn-danger"  @onclick="Eliminar"><span class ="oi oi-delete"</span>Eliminar</button>
+	</div>
+
+</div>
+</EditForm>
+
+@code{
+    [Parameter]
+    public int ocupacionId { get; set; }
+
+	public Ocupaciones ocupaciones { get; set; } = new Ocupaciones();
+    protected override void OnInitialized()
+    {
+        if(ocupacionId > 0){
+            this.ocupaciones.OcupacionID = ocupacionId;
+            Buscar();
+        }
+    }
+    
+    void Buscar(){
+        var OcupacionEncontrado = ocupacionesBll.Buscar(this.ocupaciones.OcupacionID);
+        if(OcupacionEncontrado !=null ){
+            this.ocupaciones = OcupacionEncontrado;
+        }
+        else{
+        ShowNotification(new NotificationMessage
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = "Ingrese un valor valido."
+            }
+        );
+        }
+
+    }
+    void Nuevo(){
+        this.ocupaciones = new Ocupaciones();
+    }
+    bool Validar(){
+        if(!String.IsNullOrEmpty(ocupaciones.Descripcion)){
+            return true;
+        }
+        return false;
+    }
+    void Guardar(){
+        if(!Validar()){
+            return;
+        }
+        if(ocupacionesBll.Guardar(ocupaciones))
+        ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Success,
+                    Summary = "Se ha guardado con exito."
+                }
+            );
+            this.Nuevo();
+    }
+    void Eliminar(){
+        if(ocupacionesBll.Eliminar(ocupaciones.OcupacionID)){
+            ShowNotification(
+            new NotificationMessage
+            {
+                Severity = NotificationSeverity.Info,
+                Summary = "Se ha eliminado"
+            }
+        );
+        this.Nuevo();
+    }
+    else{
+        ShowNotification(
+            new NotificationMessage
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = "No hay elemento para borrar."
+            }
+        );
+        return ;
+    }
+}    
+    void ShowNotification(NotificationMessage message)
+    {
+        NotificationService.Notify(message);
+    }
+
+}

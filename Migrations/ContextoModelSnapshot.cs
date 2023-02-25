@@ -26,12 +26,12 @@ namespace Registros.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<double?>("Salario")
+                    b.Property<double>("Salario")
                         .HasColumnType("REAL");
 
                     b.HasKey("OcupacionID");
 
-                    b.ToTable("ocupaciones");
+                    b.ToTable("Ocupaciones");
                 });
 
             modelBuilder.Entity("Pagos", b =>
@@ -78,11 +78,14 @@ namespace Registros.Migrations
                     b.ToTable("PagosDetalles");
                 });
 
-            modelBuilder.Entity("Persona", b =>
+            modelBuilder.Entity("Personas", b =>
                 {
                     b.Property<int>("PersonaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<double>("Balance")
+                        .HasColumnType("REAL");
 
                     b.Property<string>("Celular")
                         .HasColumnType("TEXT");
@@ -91,9 +94,10 @@ namespace Registros.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("FechaNacimiento")
+                    b.Property<DateTime?>("FechaNacimiento")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nombre")
@@ -108,37 +112,38 @@ namespace Registros.Migrations
 
                     b.HasKey("PersonaId");
 
-                    b.ToTable("Persona");
+                    b.ToTable("Personas");
                 });
 
-            modelBuilder.Entity("Prestamo", b =>
+            modelBuilder.Entity("Prestamos", b =>
                 {
                     b.Property<int>("PrestamoId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Concepto")
-                        .HasColumnType("TEXT");
+                    b.Property<double>("Balance")
+                        .HasColumnType("REAL");
 
-                    b.Property<string>("Fecha")
+                    b.Property<string>("Concepto")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("Fecha")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double?>("Monto")
+                        .IsRequired()
+                        .HasColumnType("REAL");
 
                     b.Property<int>("PersonaId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Vence")
+                    b.Property<DateTime?>("Vence")
                         .HasColumnType("TEXT");
-
-                    b.Property<int?>("balance")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("monto")
-                        .HasColumnType("INTEGER");
 
                     b.HasKey("PrestamoId");
 
-                    b.ToTable("Prestamo");
+                    b.ToTable("Prestamos");
                 });
 #pragma warning restore 612, 618
         }
