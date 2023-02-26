@@ -14,7 +14,7 @@ using System.Linq.Expressions;
 
         public bool Existe(int ocupacionId)
         {
-            return _contexto.Ocupaciones.Any(o => o.OcupacionID == ocupacionId);
+            return _contexto.Ocupaciones.Any(o => o.OcupacionId == ocupacionId);
         }
 
         private bool Insertar(Ocupaciones ocupacion)
@@ -25,38 +25,28 @@ using System.Linq.Expressions;
 
         private bool Modificar(Ocupaciones ocupacion)
         {
-            var ocupacionEncontrada = _contexto.Ocupaciones.Find(ocupacion.OcupacionID);
-
-            if(ocupacionEncontrada != null){
-                _contexto.Entry(ocupacion).CurrentValues.SetValues(ocupacion);
-                return _contexto.SaveChanges() > 0;
-            }
-
-            return false;
+            
+            _contexto.Entry(ocupacion).State = EntityState.Modified;
+            return _contexto.SaveChanges() > 0;
         }
 
         public bool Guardar(Ocupaciones ocupacion)
         {
-            if (!Existe(ocupacion.OcupacionID))
+            if (!Existe(ocupacion.OcupacionId))
                 return this.Insertar(ocupacion);
             else
                 return this.Modificar(ocupacion);
         }
 
-        public bool Eliminar(int ocupacionId)
+        public bool Eliminar(Ocupaciones ocupacion)
         {
-            var ocupacionEncontrada = _contexto.Ocupaciones.Where(o => o.OcupacionID == ocupacionId).SingleOrDefault();
-            if(ocupacionEncontrada != null){
-                _contexto.Entry(ocupacionEncontrada).State = EntityState.Deleted;
-                return  _contexto.SaveChanges() > 0;
-            }
-
-            return false;
+            _contexto.Entry(ocupacion).State = EntityState.Deleted;
+            return  _contexto.SaveChanges() > 0;
         }
 
         public Ocupaciones? Buscar(int ocupacionId)
         {
-            return _contexto.Ocupaciones.Where(o => o.OcupacionID == ocupacionId).AsNoTracking().SingleOrDefault();
+            return _contexto.Ocupaciones.Where(o => o.OcupacionId == ocupacionId).AsNoTracking().SingleOrDefault();
         }
 
         public List<Ocupaciones> GetList(Expression<Func<Ocupaciones, bool>> criterio)

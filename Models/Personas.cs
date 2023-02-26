@@ -15,11 +15,8 @@ public class Personas{
 
     public string? Direccion {get; set;}
 
-    public DateTime? FechaNacimiento {get; set;}
-
-    [Required(ErrorMessage = "El Campo OcupacionId es requerida")]
+    public DateTime FechaNacimiento {get; set;}
     public int OcupacionId {get; set;}
-
-    [Required(ErrorMessage = "El campo balance es requerido")]
+    
     public double Balance {get; set;}
 }

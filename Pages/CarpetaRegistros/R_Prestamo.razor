@@ -5,7 +5,8 @@
 @inject PersonasBLL personasBLL
 @inject NotificationService NotificationService
 
-<EditForm Model="prestamo" OnInvalidSubmit="Guardar">
+<EditForm Model="prestamo" OnValidSubmit="Guardar">
+    <DataAnnotationsValidator />
     <div class="card">
         <div class="card-header">
             <h1> Registo Prestamo </h1>
@@ -13,24 +14,23 @@
 
 
         <div class="card-body">
-            <div>
+            <div class="form-group">
                 <label>PrestamoId: </label><br>
                 <InputNumber @bind-Value="prestamo.PrestamoId" class="form-control" /><br>
-
-                <button type="buttom" class="btn btn-primary" @onclick="Buscar"><span class="oi oi-file" </span>Buscar</button><br>
+                <button type="button" class="btn btn-primary input-group-text" @onclick="Buscar"><i class="oi oi-magnifying-glass" /> Buscar</button><br>
             </div>
 
-            <div>
+            <div class="form-group">
                 <label>Fecha: </label><br>
                 <InputDate @bind-Value="prestamo.Fecha" class="form-control" /><br>
             </div>
 
-            <div>
+            <div class="form-group">
                 <label>Vence: </label><br>
                 <InputDate @bind-Value="prestamo.Vence" class="form-control" /><br>
             </div>
 
-            <div>
+            <div class="form-group">
                 <label>PersonaId: </label><br>
                 <InputSelect class="form-select" @bind-Value="prestamo.PersonaId">
                     @foreach (var personaExistente in personasBLL.GetList(o => true))
@@ -38,23 +38,21 @@
                         <option value="@personaExistente.PersonaId">@personaExistente.Nombre</option>
                     }
                 </InputSelect>
-                <ValidationMessage For="@(() => prestamo.PersonaId)" />
             </div>
 
-            <div>
+            <div class="form-group">
                 <label>Concepto: </label><br>
                 <InputText @bind-Value="prestamo.Concepto" class="form-control" /><br>
                 <ValidationMessage For="@(() => prestamo.Concepto)" />
             </div>
 
-            <div>
+            <div class="form-group">
                 <label>Monto: </label><br>
                 <InputNumber @bind-Value="prestamo.Monto" class="form-control" /><br>
                 <ValidationMessage For="@(() => prestamo.Monto)" />
             </div>
 
-            <div>
-
+            <div class="form-group">
                 <label>Balance: </label><br>
                 <InputNumber @bind-Value="prestamo.Balance" class="form-control" /><br>
                 <ValidationMessage For="@(() =>prestamo.Balance)" />
@@ -63,10 +61,12 @@
 
         </div>
 
-        <div class="model-footer">
-            <button type="buttom" class="btn btn-primary" @onclick="Nuevo"><span class="oi oi-file"</span>Nuevo</button>
-            <button type="submit" class="btn btn-success" @onclick="Guardar"><span class="oi oi-delete"</span>Guardar</button>
-            <button type="button" class="btn btn-danger" @onclick="Eliminar"><span class="oi oi-document" </span>Eliminar</button>
+        <div class="card-footer">
+            <div class="form-group text-center" display: inline-block>
+                <button type="button" class="btn btn-lg btn-primary" @onclick="Nuevo"><i class="oi oi-file" /> Nuevo </button>
+                <button type="submit" class="btn btn-lg btn-success"><i class="oi oi-document" /> Guardar </button>
+                <button type="button" class="btn btn-lg btn-danger" @onclick="Eliminar"><i class="oi oi-trash" /> Eliminar </button>
+            </div>
         </div>
 
     </div>
@@ -74,76 +74,78 @@
 
 @code {
     [Parameter]
-    public int PrestamoId { get; set; }
+    public int prestamoId { get; set; }
 
 	public Prestamos prestamo { get; set; } = new Prestamos();
-    public Personas persona {get; set;} = new Personas();
     protected override void OnInitialized()
     {
-        if(PrestamoId > 0){
-            this.prestamo.PrestamoId = PrestamoId;
-            Buscar();
+        if(prestamoId > 0){
+            this.prestamo.PrestamoId = prestamoId;
+            this.Buscar();
         }
     }
     
-    void Buscar(){
-        var prestamoEncontrado = prestamosBLL.Buscar(this.prestamo.PrestamoId);
-        if(prestamoEncontrado !=null ){
-            this.prestamo = prestamoEncontrado;
-        }
-        else{
-        ShowNotification(new NotificationMessage
-            {
-                Severity = NotificationSeverity.Error,
-                Summary = "Ingrese un valor valido."
-            }
-        );
+    private void Buscar(){
+        if (prestamo.PrestamoId > 0)
+        {
+            var encontrado = prestamosBLL.Buscar(prestamo.PrestamoId);
+
+            if (encontrado != null)
+                this.prestamo = encontrado;
+            
         }
 
     }
-    void Nuevo(){
-        this.prestamo = new Prestamos();
+    public void Nuevo(){
+        prestamo = new Prestamos();
     }
-    bool Validar(){
-        if(!String.IsNullOrEmpty(prestamo.Concepto)){
-            return true;
-        }
-        return false;
+    bool Validar()
+    {
+        return true;
     }
-    void Guardar(){
-        if(!Validar()){
+    public void Guardar()
+    {
+        bool Guardado;
+
+        if (!Validar())
+        {
             return;
         }
-        if(prestamosBLL.Guardar(prestamo))
-        ShowNotification(new NotificationMessage
-                {
-                    Severity = NotificationSeverity.Success,
-                    Summary = "Se ha guardado con exito."
-                }
-            );
-            this.Nuevo();
-    }
-    void Eliminar(){
-        if(prestamosBLL.Eliminar(prestamo.PrestamoId)){
+
+
+        Guardado = prestamosBLL.Guardar(prestamo);
+
+        if (Guardado)
+        {
             ShowNotification(
             new NotificationMessage
             {
-                Severity = NotificationSeverity.Info,
-                Summary = "Se ha eliminado"
-            }
-        );
-        this.Nuevo();
-    }
-        else{
-            ShowNotification(
-                new NotificationMessage
-                {
-                Severity = NotificationSeverity.Error,
-                Summary = "No hay elemento para borrar."
-                }
-            );
-            return ;
+                Severity = NotificationSeverity.Success,
+                Summary = "Guardado correctamente"
+            });
+            
+            Nuevo();
+            
         }
+    }
+    public void Eliminar()
+    {
+        bool eliminado;
+
+        eliminado = prestamosBLL.Eliminar(prestamo);
+
+        if (eliminado)
+        {
+            ShowNotification(
+            new NotificationMessage
+            {
+                Severity = NotificationSeverity.Warning,
+                Summary = "Eliminado Correctamente"
+            });
+            Nuevo();
+            
+        }
+        
     }    
     void ShowNotification(NotificationMessage message)
     {

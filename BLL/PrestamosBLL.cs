@@ -24,14 +24,8 @@ public class PrestamosBLL{
 
         private bool Modificar(Prestamos prestamo)
         {
-            var prestamoEncontrada = _contexto.Prestamos.Find(prestamo.PrestamoId);
-
-            if(prestamoEncontrada != null){
-                _contexto.Entry(prestamo).CurrentValues.SetValues(prestamo);
-                return _contexto.SaveChanges() > 0;
-            }
-
-            return false;
+            _contexto.Entry(prestamo).State = EntityState.Modified;
+            return _contexto.SaveChanges() > 0;
         }
 
         public bool Guardar(Prestamos prestamo)
@@ -44,15 +38,10 @@ public class PrestamosBLL{
 
 
 
-        public bool Eliminar(int prestamoId)
+        public bool Eliminar(Prestamos prestamo)
         {
-            var prestamoEncontrada = _contexto.Prestamos.Where(o => o.PrestamoId == prestamoId).SingleOrDefault();
-            if(prestamoEncontrada != null){
-                _contexto.Entry(prestamoEncontrada).State = EntityState.Deleted;
-                return  _contexto.SaveChanges() > 0;
-            }
-
-            return false;
+            _contexto.Entry(prestamo).State = EntityState.Deleted;
+            return  _contexto.SaveChanges() > 0;
         }
 
         public Prestamos? Buscar(int prestamoId)

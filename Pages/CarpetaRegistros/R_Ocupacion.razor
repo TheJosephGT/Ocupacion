@@ -1,120 +1,135 @@
 @page "/ocupacion"
 @page "/ocupacion/{OcupacionId:int}"
 
-@inject OcupacionesBLL ocupacionesBll
-@inject NotificationService NotificationService
+@inject OcupacionesBLL OcupacionesBLL
+@inject NotificationService notificationService
 
-
-<EditForm Model="ocupaciones" OnInvalidSubmit="Guardar">
-	<DataAnnotationsValidator />
+<EditForm Model="ocupacion" OnValidSubmit="Guardar">
+    	<DataAnnotationsValidator />
 	<div class= "card">
 	<div class= "card-header">
 		<h1> Registo Ocupaciones </h1>
 	</div>
 
 	<div class="card-body">
-		<div>
+		<div class="form-group">
 			<label>OcupacionID: </label><br>
-			<InputNumber @bind-Value="ocupaciones.OcupacionID" class="form-control" /><br>
-			<button type="buttom" class="btn btn-primary" @onclick="Buscar"><span class ="oi oi-file" </span>Buscar</button><br>
+			<InputNumber @bind-Value="ocupacion.OcupacionId" class="form-control" /> <br>
+			<button type="button" class="btn btn-primary input-group-text" @onclick="Buscar"><i class="oi oi-magnifying-glass" /> Buscar</button>
 		</div>
-		<div>
+
+		<div class="form-group">
 			<label>Descripcion: </label><br>
-			<InputText @bind-Value="ocupaciones.Descripcion" class="form-control" /><br>
-			<ValidationMessage For="@(() => ocupaciones.Descripcion)" />
+			<InputText @bind-Value="ocupacion.Descripcion" class="form-control" />
+			<ValidationMessage For="@(() => ocupacion.Descripcion)" />
 		</div>
 
-		<div>
+		<div class="form-group"> 
 			<label>Salario: </label><br>
-			<InputNumber @bind-Value="ocupaciones.Salario" class="form-control" /><br>
-			<ValidationMessage For="@(() => ocupaciones.Salario)"/>
+			<InputNumber @bind-Value="ocupacion.Salario" class="form-control" />
+			<ValidationMessage For="@(() => ocupacion.Salario)"/>
 		</div>
 	</div>
 
-	<div class="model-footer">
-		<button class="btn btn-primary" @onclick="Nuevo"><span class ="oi oi-file" </span>Nuevo</button>
-		<button type="submit" class="btn btn-success" @onclick="Guardar"><span class ="oi oi-document"</span>Guardar</button>
-		<button class="btn btn-danger"  @onclick="Eliminar"><span class ="oi oi-delete"</span>Eliminar</button>
-	</div>
+    <div class="card-footer">
+        <div class="form-group text-center" display: inline-block>
+            <button type="button" class="btn btn-lg btn-primary" @onclick="Nuevo"><i class="oi oi-file" /> Nuevo </button>
+            <button type="submit" class="btn btn-lg btn-success"><i class="oi oi-document" /> Guardar </button>
+            <button type="button" class="btn btn-lg btn-danger" @onclick="Eliminar"><i class="oi oi-trash" /> Eliminar </button>
+        </div>
+    </div>
 
 </div>
 </EditForm>
 
-@code{
+@code {
     [Parameter]
-    public int ocupacionId { get; set; }
+    public int OcupacionId { get; set; }
 
-	public Ocupaciones ocupaciones { get; set; } = new Ocupaciones();
+    public Ocupaciones ocupacion { get; set; } = new Ocupaciones();
+
+
     protected override void OnInitialized()
     {
-        if(ocupacionId > 0){
-            this.ocupaciones.OcupacionID = ocupacionId;
-            Buscar();
+        if (OcupacionId > 0)
+        {
+           
+            this.ocupacion.OcupacionId = OcupacionId;
+            this.Buscar();
         }
     }
-    
-    void Buscar(){
-        var OcupacionEncontrado = ocupacionesBll.Buscar(this.ocupaciones.OcupacionID);
-        if(OcupacionEncontrado !=null ){
-            this.ocupaciones = OcupacionEncontrado;
-        }
-        else{
-        ShowNotification(new NotificationMessage
-            {
-                Severity = NotificationSeverity.Error,
-                Summary = "Ingrese un valor valido."
-            }
-        );
-        }
 
+    public void Nuevo()
+    {
+        ocupacion = new Ocupaciones();
     }
-    void Nuevo(){
-        this.ocupaciones = new Ocupaciones();
+
+    bool Validar()
+    {
+        return true;
     }
-    bool Validar(){
-        if(!String.IsNullOrEmpty(ocupaciones.Descripcion)){
-            return true;
-        }
-        return false;
-    }
-    void Guardar(){
-        if(!Validar()){
+
+    public void Guardar()
+    {
+        bool Guardado;
+
+        if (!Validar())
+        {
             return;
         }
-        if(ocupacionesBll.Guardar(ocupaciones))
-        ShowNotification(new NotificationMessage
-                {
-                    Severity = NotificationSeverity.Success,
-                    Summary = "Se ha guardado con exito."
-                }
-            );
-            this.Nuevo();
-    }
-    void Eliminar(){
-        if(ocupacionesBll.Eliminar(ocupaciones.OcupacionID)){
+
+
+        Guardado = OcupacionesBLL.Guardar(ocupacion);
+
+        if (Guardado)
+        {
             ShowNotification(
             new NotificationMessage
             {
-                Severity = NotificationSeverity.Info,
-                Summary = "Se ha eliminado"
-            }
-        );
-        this.Nuevo();
+                Severity = NotificationSeverity.Success,
+                Summary = "Guardado correctamente"
+            });
+            
+            Nuevo();
+            
+        }
+        
     }
-    else{
-        ShowNotification(
-            new NotificationMessage
-            {
-                Severity = NotificationSeverity.Error,
-                Summary = "No hay elemento para borrar."
-            }
-        );
-        return ;
-    }
-}    
-    void ShowNotification(NotificationMessage message)
+    private void Buscar()
     {
-        NotificationService.Notify(message);
+        if (ocupacion.OcupacionId > 0)
+        {
+            var encontrado = OcupacionesBLL.Buscar(ocupacion.OcupacionId);
+
+            if (encontrado != null)
+                this.ocupacion = encontrado;
+            
+        }
     }
 
+    public void Eliminar()
+    {
+        bool eliminado;
+
+        eliminado = OcupacionesBLL.Eliminar(ocupacion);
+
+        if (eliminado)
+        {
+            ShowNotification(
+            new NotificationMessage
+            {
+                Severity = NotificationSeverity.Warning,
+                Summary = "Eliminado Correctamente"
+            });
+            Nuevo();
+            
+        }
+        
+    }
+
+    void ShowNotification(NotificationMessage message)
+    {
+        notificationService.Notify(message);
+
+    }
 }

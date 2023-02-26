@@ -14,12 +14,12 @@
 						<th>Fecha</th>
 						<th>PersonaId</th>
 						<th>Concepto</th>
-						<th>ValorPagado</th>
+						<th>Monto</th>
 					</tr>
 
 				</thead>
 				<tbody>
-			@foreach (var item in pagosBLL.GetList())
+			@foreach (var item in pagosBLL.GetList(o => true))
 			{
 						<tr>
 							<td>@item.PagoId</td>

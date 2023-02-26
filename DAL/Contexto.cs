@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
         public DbSet<Pagos> Pagos {get;set;}
 
-        public DbSet<PagosDetalle> PagosDetalles {get;set;}
+        public DbSet<PagosDetalle> PagosDetalle {get;set;}
 
         public Contexto(DbContextOptions <Contexto> options) : base(options)
         {

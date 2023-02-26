@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Registros.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20230225032208_Inicial")]
+    [Migration("20230226044003_Inicial")]
     partial class Inicial
     {
         /// <inheritdoc />
@@ -21,7 +21,7 @@ namespace Registros.Migrations
 
             modelBuilder.Entity("Ocupaciones", b =>
                 {
-                    b.Property<int>("OcupacionID")
+                    b.Property<int>("OcupacionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -32,7 +32,7 @@ namespace Registros.Migrations
                     b.Property<double>("Salario")
                         .HasColumnType("REAL");
 
-                    b.HasKey("OcupacionID");
+                    b.HasKey("OcupacionId");
 
                     b.ToTable("Ocupaciones");
                 });
@@ -44,10 +44,10 @@ namespace Registros.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Concepto")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Fecha")
-                        .IsRequired()
+                    b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
 
                     b.Property<double>("Monto")
@@ -78,7 +78,7 @@ namespace Registros.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PagosDetalles");
+                    b.ToTable("PagosDetalle");
                 });
 
             modelBuilder.Entity("Personas", b =>
@@ -134,8 +134,7 @@ namespace Registros.Migrations
                     b.Property<DateTime?>("Fecha")
                         .HasColumnType("TEXT");
 
-                    b.Property<double?>("Monto")
-                        .IsRequired()
+                    b.Property<double>("Monto")
                         .HasColumnType("REAL");
 
                     b.Property<int>("PersonaId")

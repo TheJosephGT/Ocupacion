@@ -15,14 +15,14 @@ namespace Registros.Migrations
                 name: "Ocupaciones",
                 columns: table => new
                 {
-                    OcupacionID = table.Column<int>(type: "INTEGER", nullable: false)
+                    OcupacionId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Descripcion = table.Column<string>(type: "TEXT", nullable: false),
                     Salario = table.Column<double>(type: "REAL", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Ocupaciones", x => x.OcupacionID);
+                    table.PrimaryKey("PK_Ocupaciones", x => x.OcupacionId);
                 });
 
             migrationBuilder.CreateTable(
@@ -31,9 +31,9 @@ namespace Registros.Migrations
                 {
                     PagoId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Fecha = table.Column<string>(type: "TEXT", nullable: false),
+                    Fecha = table.Column<DateTime>(type: "TEXT", nullable: false),
                     PersonaId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Concepto = table.Column<string>(type: "TEXT", nullable: true),
+                    Concepto = table.Column<string>(type: "TEXT", nullable: false),
                     Monto = table.Column<double>(type: "REAL", nullable: false)
                 },
                 constraints: table =>
@@ -42,7 +42,7 @@ namespace Registros.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PagosDetalles",
+                name: "PagosDetalle",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -53,7 +53,7 @@ namespace Registros.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PagosDetalles", x => x.Id);
+                    table.PrimaryKey("PK_PagosDetalle", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -105,7 +105,7 @@ namespace Registros.Migrations
                 name: "Pagos");
 
             migrationBuilder.DropTable(
-                name: "PagosDetalles");
+                name: "PagosDetalle");
 
             migrationBuilder.DropTable(
                 name: "Personas");
