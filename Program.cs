@@ -18,7 +18,6 @@ builder.Services.AddScoped<OcupacionesBLL>();
 builder.Services.AddScoped<PersonasBLL>();
 builder.Services.AddScoped<PrestamosBLL>();
 builder.Services.AddScoped<PagosBLL>();
-builder.Services.AddScoped<PagosDetalle>();
 
 builder.Services.AddScoped<DialogService>();
 builder.Services.AddScoped<NotificationService>();

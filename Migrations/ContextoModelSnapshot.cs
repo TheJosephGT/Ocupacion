@@ -75,6 +75,8 @@ namespace Registros.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("PagoId");
+
                     b.ToTable("PagosDetalle");
                 });
 
@@ -97,7 +99,7 @@ namespace Registros.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime?>("FechaNacimiento")
+                    b.Property<DateTime>("FechaNacimiento")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nombre")
@@ -128,7 +130,7 @@ namespace Registros.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime?>("Fecha")
+                    b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
 
                     b.Property<double>("Monto")
@@ -137,12 +139,26 @@ namespace Registros.Migrations
                     b.Property<int>("PersonaId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime?>("Vence")
+                    b.Property<DateTime>("Vence")
                         .HasColumnType("TEXT");
 
                     b.HasKey("PrestamoId");
 
                     b.ToTable("Prestamos");
+                });
+
+            modelBuilder.Entity("PagosDetalle", b =>
+                {
+                    b.HasOne("Pagos", null)
+                        .WithMany("PagosDetalle")
+                        .HasForeignKey("PagoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Pagos", b =>
+                {
+                    b.Navigation("PagosDetalle");
                 });
 #pragma warning restore 612, 618
         }
