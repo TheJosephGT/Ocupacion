@@ -16,8 +16,6 @@ public class Prestamos{
 
     [Range(0.01, double.MaxValue, ErrorMessage = "El monto NO es valido")]
     public double Monto {get; set;}
-
-    [Range(0.01, double.MaxValue, ErrorMessage = "El balance NO es valido")]
     public double Balance {get; set;}
 
 }

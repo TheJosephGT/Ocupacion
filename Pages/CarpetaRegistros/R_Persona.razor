@@ -137,6 +137,18 @@
     {
         bool eliminado;
 
+        if(persona.Nombre == null && persona.Telefono == null && persona.Celular == null && 
+        persona.Direccion == null && persona.OcupacionId <= 0){
+            ShowNotification(
+            new NotificationMessage
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = "No hay nada para eliminar"
+            });
+
+            return;
+        }
+
         eliminado = personasBLL.Eliminar(persona);
 
         if (eliminado)

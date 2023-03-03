@@ -111,6 +111,17 @@
     {
         bool eliminado;
 
+        if(ocupacion.Descripcion == null && ocupacion.Salario <= 0){
+            ShowNotification(
+            new NotificationMessage
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = "No hay nada para eliminar"
+            });
+
+            return;
+        }
+
         eliminado = OcupacionesBLL.Eliminar(ocupacion);
 
         if (eliminado)
@@ -118,7 +129,7 @@
             ShowNotification(
             new NotificationMessage
             {
-                Severity = NotificationSeverity.Warning,
+                Severity = NotificationSeverity.Error,
                 Summary = "Eliminado Correctamente"
             });
             Nuevo();

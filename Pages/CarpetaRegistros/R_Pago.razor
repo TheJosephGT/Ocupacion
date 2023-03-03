@@ -194,6 +194,17 @@
     {
         bool eliminado;
 
+        if(pago.PersonaId <= 0 && pago.Concepto == null && pago.Monto <= 0){
+            ShowNotification(
+            new NotificationMessage
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = "No hay nada para eliminar"
+            });
+
+            return;
+        }
+
         eliminado = pagosBLL.Eliminar(pago);
 
         if (eliminado)
@@ -212,8 +223,9 @@
 
     void AgregarPagoDetalle()
     {
-            this.pago.PagosDetalle.Add(this.detalle);
-            this.detalle = new PagosDetalle();
+            pago.PagosDetalle.Add(detalle);
+            detalle = new PagosDetalle();
+
             ShowNotification(
             new NotificationMessage
                 {
@@ -221,12 +233,6 @@
                     Summary = "Guardado Correctamente"
                 });
         
-    }
-    void EliminarPagoDetalle(int detalleId)
-    {
-        if(pago.PagosDetalle!=null && detalleId>0 ){
-            pago.PagosDetalle.RemoveAll(d => d.Id == detalleId );
-        }
     }
 
     void ShowNotification(NotificationMessage message)
